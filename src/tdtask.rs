@@ -7,6 +7,7 @@ pub struct ToDoTask {
 	pub is_compl: bool,
 	pub id_bd: usize,
 	pub date: Option<Date>,
+	pub importance: bool,
 }
 
 pub fn update_vec_list(v: Vec<ToDoTask>, i_list: usize) -> Vec<ToDoTask> { //расчитано на 10
@@ -55,6 +56,16 @@ pub fn get_late_bd(all_task: Vec<ToDoTask>) -> Vec<ToDoTask> {
 	let mut result = vec![];
 	for task in all_task {
 		if is_late(task.clone()) {
+			result.push(task);
+		};
+	};
+	result
+}
+
+pub fn get_importance_bd(all_task: Vec<ToDoTask>) -> Vec<ToDoTask> {
+	let mut result = vec![];
+	for task in all_task {
+		if task.importance {
 			result.push(task);
 		};
 	};
